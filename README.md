@@ -2,8 +2,6 @@
 
 # BXGameEngine
 
-## General Info
-
 The BXGameEngine is a little 2D Game Engine that allows to develop 2D games.
 
 ## Technologies
