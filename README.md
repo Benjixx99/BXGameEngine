@@ -2,11 +2,11 @@
 
 # BXGameEngine
 
-### General Info
+## General Info
 
 The BXGameEngine is a little 2D Game Engine that allows to develop 2D games.
 
-### Technologies
+## Technologies
 
 A list of technologies used within the project:
 * [C++17]
@@ -14,7 +14,7 @@ A list of technologies used within the project:
 * [SQLite](https://www.sqlite.org): Version 3.44.2
 * [Qt](https://www.qt.io) Version 6.6.1
 
-### Contact
+## Contact
 
 If you want to contact me send an e-mail to: anon_writer@use.startmail.com
 
