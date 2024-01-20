@@ -1,0 +1,12 @@
+BXGameEngine.qtvscr
+BXGameEngine.vcxproj
+BXGameEngine.vcxproj.filters
+BXGameEngine.vcxproj.user
+Debug/
+x64/
+
+Game/
+Levels/
+Ressources/
+
+Release/
