@@ -36,6 +36,11 @@ void bx::Editor::init() {
 
 	ClickableQLabel* firstLabel = static_cast<ClickableQLabel*>(ui.fra_ShowTiles->children()[0]);
 	firstLabel->labelClicked();
+
+	ui.btn_Add->setIcon(QIcon(QPixmap("Formfiles/Icons/Add.ico")));
+	ui.btn_Drag->setIcon(QIcon(QPixmap("Formfiles/Icons/Drag.ico")));
+	ui.btn_Draw->setIcon(QIcon(QPixmap("Formfiles/Icons/Draw.ico")));
+	ui.btn_Remove->setIcon(QIcon(QPixmap("Formfiles/Icons/Remove.ico")));
 }
 
 void bx::Editor::setLabelAndCalculateNextLabelPosition(const std::vector<std::string>& entry, QFrame* fra_Show, WidgetSize& size) {
@@ -207,13 +212,13 @@ void bx::Editor::selectTargetPosition() {
 void bx::Editor::resetData() {
 	if (ui.tw_ShowImages->currentIndex() == static_cast<int>(ShowImagesTab::Tiles)) {
 		unselectButton(ui.btn_Add, sharedData.add);
-		unselectButton(ui.btn_remove, sharedData.remove);
+		unselectButton(ui.btn_Remove, sharedData.remove);
 		unselectButton(ui.btn_Draw, sharedData.draw);
 		ui.btn_Draw->setEnabled(false);
 	}
 	else if (ui.tw_ShowImages->currentIndex() == static_cast<int>(ShowImagesTab::NPCs)) {
 		unselectButton(ui.btn_Add, sharedData.add);
-		unselectButton(ui.btn_remove, sharedData.remove);
+		unselectButton(ui.btn_Remove, sharedData.remove);
 		ui.btn_Draw->setEnabled(true);
 	}
 	sharedData.destroy = true;
@@ -221,7 +226,7 @@ void bx::Editor::resetData() {
 
 void bx::Editor::add() {
 	unselectButton(ui.btn_Drag, sharedData.drag);
-	unselectButton(ui.btn_remove, sharedData.remove);
+	unselectButton(ui.btn_Remove, sharedData.remove);
 	clickedOnButton(ui.btn_Add, sharedData.add);
 	if (!sharedData.add) { sharedData.destroy = true; }
 }
@@ -229,7 +234,7 @@ void bx::Editor::add() {
 void bx::Editor::drag() {
 	unselectButton(ui.btn_Add, sharedData.add);
 	unselectButton(ui.btn_Draw, sharedData.draw);
-	unselectButton(ui.btn_remove, sharedData.remove);
+	unselectButton(ui.btn_Remove, sharedData.remove);
 	clickedOnButton(ui.btn_Drag, sharedData.drag);
 	sharedData.destroy = true;
 }
@@ -242,7 +247,7 @@ void bx::Editor::draw() {
 void bx::Editor::remove() {
 	unselectButton(ui.btn_Add, sharedData.add);
 	unselectButton(ui.btn_Drag, sharedData.drag);
-	clickedOnButton(ui.btn_remove, sharedData.remove);
+	clickedOnButton(ui.btn_Remove, sharedData.remove);
 	sharedData.destroy = true;
 }
 
