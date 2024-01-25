@@ -6,12 +6,12 @@ Debug/
 Release/
 x64/
 
-Ressources/Assets
-Ressources/Configfiles/Assets
-Ressources/Configfiles/NotInUseYet
-Ressources/Configfiles/Uniform
-Ressources/Databases
-Ressources/Logs
-Ressources/Proposals
-Ressources/Savefiles
-Ressources/Texts
+Resources/Assets
+Resources/Configfiles/Assets
+Resources/Configfiles/NotInUseYet
+Resources/Configfiles/Uniform
+Resources/Databases
+Resources/Logs
+Resources/Proposals
+Resources/Savefiles
+Resources/Texts
