@@ -1,0 +1,33 @@
+String 		Header Menu
+
+String 		MenuItem Resume Game
+String 		MenuItem Save Game
+String 		MenuItem Load Game
+String 		MenuItem Settings
+String		MenuItem Exit To Main Menu
+String		MenuItem Exit To Desktop
+
+String		Font Joystix
+
+Int 		HeaderSpaceFromTop		25
+Int		HeaderSpaceFromLeft		768
+Int 		MenuItemSpaceFromHeader		240
+Int		MenuItemSpaceFromLeft		768
+Int 		SpaceBetweenMenuItems		110
+Int 		FooterSpaceFromBottom		150
+Int		FooterSpaceFromLeft		25
+
+Int 		HeaderFontSize			75
+Int		HeaderOutlineThickness		5
+Int		MenuItemFontSize 		45
+Int		MenuItemOutlineThickness	3
+Int		FooterFontSize			40
+Int		FooterOutlineThickness		0
+
+Color 		Background 			37 36 39
+Color		HeaderFont 			200 50 100
+Color		HeaderOutline			100 50 125
+Color		MenuItemFont 			0 0 255
+Color		MenuItemOutline			88 101 242
+Color 		SelectedMenuItemFont 		200 50 100
+Color		SelectedMenuItemOutline 	88 101 242

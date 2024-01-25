@@ -1,0 +1,38 @@
+String 		Header NOGAME
+
+String 		MenuItem Continue
+String 		MenuItem Load Game
+String 		MenuItem New Game
+String		MenuItem Levels
+String 		MenuItem Settings
+String 		MenuItem Quit
+String		MenuItem Test Level
+
+String		Footer  up : W  down : S  select : D  back : ESC
+
+String 		Font Joystix
+
+Int 		HeaderSpaceFromTop		25
+Int		HeaderSpaceFromLeft		768
+Int 		MenuItemSpaceFromHeader		240
+Int		MenuItemSpaceFromLeft		768
+Int 		SpaceBetweenMenuItems		110
+Int 		FooterSpaceFromBottom		150
+Int		FooterSpaceFromLeft		25
+
+Int 		HeaderFontSize			80
+Int		HeaderOutlineThickness		6
+Int		MenuItemFontSize 		55
+Int		MenuItemOutlineThickness	3
+Int		FooterFontSize			40
+Int		FooterOutlineThickness		0
+
+Color 		Background 			37 36 39
+Color		HeaderFont 			200 50 100
+Color		HeaderOutline			100 50 125
+Color		MenuItemFont 			0 0 255
+Color		MenuItemOutline			88 101 242
+Color 		SelectedMenuItemFont 		200 50 100
+Color		SelectedMenuItemOutline 	88 101 242
+Color		FooterFont			0 200 255
+Color		FooterOutline			20 240 255

@@ -3,10 +3,15 @@ BXGameEngine.vcxproj
 BXGameEngine.vcxproj.filters
 BXGameEngine.vcxproj.user
 Debug/
+Release/
 x64/
 
-Game/
-Levels/
-Ressources/
-
-Release/
+Ressources/Assets
+Ressources/Configfiles/Assets
+Ressources/Configfiles/NotInUseYet
+Ressources/Configfiles/Uniform
+Ressources/Databases
+Ressources/Logs
+Ressources/Proposals
+Ressources/Savefiles
+Ressources/Texts
