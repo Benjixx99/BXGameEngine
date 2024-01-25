@@ -1,5 +1,5 @@
 #include "../../Headerfiles/Load/LoadUniforms.hpp"
-#include "../Headerfiles/Data/Files/ReadIn.hpp"
+#include "../../Headerfiles/Data/Files/ReadIn.hpp"
 #include <fstream>
 
 void bx::LoadUniforms::loadUniforms(const std::string& configFile, FloatUniformVector& fuv) {

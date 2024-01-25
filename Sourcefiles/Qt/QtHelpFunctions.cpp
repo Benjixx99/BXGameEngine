@@ -1,4 +1,4 @@
-#include "../Headerfiles/Qt/QtHelpFunctions.hpp"
+#include "../../Headerfiles/Qt/QtHelpFunctions.hpp"
 
 QObject* QtHelpFunctions::getRelative(const std::string& name, const QObject* _this) {
 	QObject* parent = _this->parent();

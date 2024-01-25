@@ -10,5 +10,6 @@ namespace bx {
 		const std::string cofingFiles = "Ressources/Configfiles";
 		const std::string databases = "Ressources/Databases";
 		const std::string assets = "Ressources/Assets";
+		const std::string icons = "Ressources/Icons";
 	}
 }

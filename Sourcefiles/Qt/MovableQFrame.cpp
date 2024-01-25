@@ -1,6 +1,6 @@
-#include "../Headerfiles/Qt/MovableQFrame.hpp"
-#include "../Headerfiles/Qt/QtHelpFunctions.hpp"
-#include "../Headerfiles/Tools/Editor/Editor.hpp"
+#include "../../Headerfiles/Qt/MovableQFrame.hpp"
+#include "../../Headerfiles/Qt/QtHelpFunctions.hpp"
+#include "../../Headerfiles/Tools/Editor/Editor.hpp"
 
 MovableQFrame::MovableQFrame(QWidget* parent) : QFrame(parent) {}
 

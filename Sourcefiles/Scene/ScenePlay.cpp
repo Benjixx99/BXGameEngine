@@ -4,7 +4,6 @@
 #include <mutex>
 
 #include <SFML/Audio.hpp>
-#include <QtWidgets/qapplication.h>
 
 #include "../../Headerfiles/Scene/ScenePlay.hpp"
 #include "../../Headerfiles/Scene/SceneInGameMenu.hpp"

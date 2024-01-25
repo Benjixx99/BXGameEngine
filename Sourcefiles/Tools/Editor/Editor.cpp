@@ -37,10 +37,10 @@ void bx::Editor::init() {
 	ClickableQLabel* firstLabel = static_cast<ClickableQLabel*>(ui.fra_ShowTiles->children()[0]);
 	firstLabel->labelClicked();
 
-	ui.btn_Add->setIcon(QIcon(QPixmap("Formfiles/Icons/Add.ico")));
-	ui.btn_Drag->setIcon(QIcon(QPixmap("Formfiles/Icons/Drag.ico")));
-	ui.btn_Draw->setIcon(QIcon(QPixmap("Formfiles/Icons/Draw.ico")));
-	ui.btn_Remove->setIcon(QIcon(QPixmap("Formfiles/Icons/Remove.ico")));
+	ui.btn_Add->setIcon(QIcon(QPixmap(QString::fromStdString(Paths::icons + "/Add.ico"))));
+	ui.btn_Drag->setIcon(QIcon(QPixmap(QString::fromStdString(Paths::icons + "/Drag.ico"))));
+	ui.btn_Draw->setIcon(QIcon(QPixmap(QString::fromStdString(Paths::icons + "/Draw.ico"))));
+	ui.btn_Remove->setIcon(QIcon(QPixmap(QString::fromStdString(Paths::icons + "/Remove.ico"))));
 }
 
 void bx::Editor::setLabelAndCalculateNextLabelPosition(const std::vector<std::string>& entry, QFrame* fra_Show, WidgetSize& size) {

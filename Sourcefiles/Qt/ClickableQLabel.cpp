@@ -1,6 +1,6 @@
-#include "../Headerfiles/Qt/ClickableQLabel.hpp"
-#include "../Headerfiles/Qt/QtHelpFunctions.hpp"
-#include "../Headerfiles/Tools/Editor/Editor.hpp"
+#include "../../Headerfiles/Qt/ClickableQLabel.hpp"
+#include "../../Headerfiles/Qt/QtHelpFunctions.hpp"
+#include "../../Headerfiles/Tools/Editor/Editor.hpp"
 
 ClickableQLabel::ClickableQLabel(QWidget* parent) : QLabel(parent) {
 	connect(this, SIGNAL(clicked()), this, SLOT(labelClicked()));
