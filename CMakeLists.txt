@@ -6,8 +6,8 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 endif()
 
 if(NOT CREATED_FOLDERS_AND_FILES)
-    include(CreateFolders.cmake)
-    include(CreateFiles.cmake)
+    include("Cmake/CreateFolders.cmake")
+    include("Cmake/CreateFiles.cmake")
     set(CREATED_FOLDERS_AND_FILES true CACHE BOOL "Folders and files have been created" FORCE)
 endif()
 
@@ -16,7 +16,7 @@ project(BXGameEnigne VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Find")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Cmake/Find")
 
 find_package(SQLite3 REQUIRED)
 find_package(SFML 2.6 COMPONENTS graphics window audio REQUIRED)
