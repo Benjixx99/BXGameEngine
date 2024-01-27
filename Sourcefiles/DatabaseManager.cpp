@@ -1,4 +1,7 @@
 #include "../Headerfiles/DatabaseManager.hpp"
+#include "../Headerfiles/Common/Paths.hpp"
+#include "../Headerfiles/Tools/Logger.hpp"
+
 
 bx::DatabaseManager::DatabaseManager() {}
 
@@ -6,7 +9,7 @@ bx::DatabaseManager::DatabaseManager(const std::string& databaseName) : database
 
 void bx::DatabaseManager::open() {
 	if (sqlite3_open(databaseName.c_str(), &database)) {
-		std::cerr << "[ERROR]: Opening database wasn't successful! " << sqlite3_errmsg(database) << "\n";
+		Logger::get().log(LogLevel::Warning, "Opening database wasn't successful!", __FILE__, __LINE__, Paths::logs + "/Database.log");
 		return;
 	}
 	output.entries.clear();
@@ -22,12 +25,13 @@ void bx::DatabaseManager::execute(const std::string& SQL, const std::string acti
 	open();
 	char* errorMessage;
 	if (sqlite3_exec(database, SQL.c_str(), callback, this, &errorMessage)) {
-		std::cerr << "[ERROR]: " + action + " wasn't successful! " << errorMessage << "\n";
+		std::string message =  action + " wasn't successful! " + errorMessage;
+		Logger::get().log(LogLevel::Warning, message, __FILE__, __LINE__, Paths::logs + "/Database.log");
 		//std::cerr << "SQL: " << SQL << "\n";
 		sqlite3_free(errorMessage);
 	}
 	else {
-		std::cout << action + " was successful\n";
+		Logger::get().log(LogLevel::Info, action + " was successful", __FILE__, __LINE__, Paths::logs + "/Database.log");
 	}
 	close();
 }

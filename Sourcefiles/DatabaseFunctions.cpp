@@ -1,11 +1,14 @@
 #include "../Headerfiles/DatabaseFunctions.hpp"
-
+#include "../Headerfiles/Common/Paths.hpp"
+#include "../Headerfiles/Tools/Logger.hpp"
 
 using namespace bx;
 void typeToCreate(DatabaseManager& database, DataToCreateAssetsDatabase& data, const DatabaseType type) {
 	switch (type) {
 	case DatabaseType::Assets: DataFromFilesystem::assetsDatabaseData(database, data); break;
-	default: std::cerr << "[ERROR]: Unknown database type!\n"; break;
+	default:
+		Logger::get().log(LogLevel::Warning, "Unknown database type!", __FILE__, __LINE__, Paths::logs + "/Database.log");
+		break;
 	}
 }
 

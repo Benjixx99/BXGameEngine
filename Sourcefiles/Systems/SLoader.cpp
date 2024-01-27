@@ -1,5 +1,7 @@
 #include "../../Headerfiles/Systems/SLoader.hpp"
 #include "../../Headerfiles/Data/Files/ReadIn.hpp"
+#include "../Headerfiles/Common/Paths.hpp"
+#include "../Headerfiles/Tools/Logger.hpp"
 
 bx::SLoader::SLoader() {}
 
@@ -52,7 +54,7 @@ void bx::SLoader::rooms(const Vector2& room, const Vector2& preRoom, const TileC
 		for (auto room : roomsToLoad) {
 			if (tileRoom == room) {
 				EntityPointer entity = creation->spawnTile(tileConfig);
-				//std::cout << "Loaded: " << entity->getTag() << " in room " << room;
+				Logger::get().log(LogLevel::Tracing, "Loaded: " + entity->getTag() + " in room " + room.toString(), "SLoader", __LINE__);
 			}
 		}
 	}
@@ -65,7 +67,7 @@ void bx::SLoader::rooms(const Vector2& room, const Vector2& preRoom, const TileC
 		for (auto room : roomsToUnLoad) {
 			if (entityRoom == room) {
 				entity->destroy();
-				//std::cout << "Unloaded: " << entity->getTag() << " in room " << room;
+				Logger::get().log(LogLevel::Tracing, "Unloaded: " + entity->getTag() + " in room " + room.toString(), "SLoader", __LINE__);
 			}
 		}
 	}

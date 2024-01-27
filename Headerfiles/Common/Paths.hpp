@@ -11,5 +11,6 @@ namespace bx {
 		const std::string databases = "Resources/Databases";
 		const std::string assets = "Resources/Assets";
 		const std::string icons = "Resources/Icons";
+		const std::string logs = "Resources/Logs";
 	}
 }

@@ -1,5 +1,7 @@
 #include "../../Headerfiles/Systems/SCollision.hpp"
 #include "../../Headerfiles/PAM/Physics.hpp"
+#include "../Headerfiles/Common/Paths.hpp"
+#include "../Headerfiles/Tools/Logger.hpp"
 
 bx::SCollision::SCollision() {}
 
@@ -25,23 +27,23 @@ void bx::SCollision::detection(EntityManager& entities, GCollision& gCollision) 
 				if (previousOverlap.x > 0 && mobilePrePosition.y < mobilePosition.y) {
 					resolutionMovement(mobilePosition.y, overlap.y * -1, blockMovement);
 					gCollision.fromAbove(mobileEntity, entity);
-					//std::cout << "From above\n";
+					Logger::get().log(LogLevel::Tracing, "Collision from above", "SCollision", __LINE__);
 				}
 				else if (previousOverlap.x > 0 && mobilePrePosition.y > mobilePosition.y) {
 					resolutionMovement(mobilePosition.y, overlap.y, blockMovement);
 					gCollision.fromBelow(mobileEntity, entity);
-					//std::cout << "From below\n";
+					Logger::get().log(LogLevel::Tracing, "Collision from below", "SCollision", __LINE__);
 				}
 
 				if (previousOverlap.y > 0 && mobilePrePosition.x < mobilePosition.x) {
 					resolutionMovement(mobilePosition.x, overlap.x * -1, blockMovement);
 					gCollision.fromLeft(mobileEntity, entity);
-					//std::cout << "From left\n";
+					Logger::get().log(LogLevel::Tracing, "Collision from left", "SCollision", __LINE__);
 				}
 				else if (previousOverlap.y > 0 && mobilePrePosition.x > mobilePosition.x) {
 					resolutionMovement(mobilePosition.x, overlap.x, blockMovement);
 					gCollision.fromRight(mobileEntity, entity);
-					//std::cout << "From right\n";
+					Logger::get().log(LogLevel::Tracing, "Collision from right", "SCollision", __LINE__);
 				}
 
 				if (previousOverlap.x > 0 || previousOverlap.y > 0) {

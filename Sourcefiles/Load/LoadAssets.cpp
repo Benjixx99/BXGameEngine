@@ -1,6 +1,7 @@
 #include "../../Headerfiles/Load/LoadAssets.hpp"
 #include "../../Headerfiles/Config/Config.hpp"
 #include "../../Headerfiles/Common/Paths.hpp"
+#include "../Headerfiles/Tools/Logger.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -17,7 +18,7 @@ void bx::LoadAssets::fonts(Assets& assets, DatabaseManager&& database) {
 	for (const auto& entry : database.selectAllEntriesFrom("Fonts")) {
 		sf::Font font;
 		if (!font.loadFromFile(entry[1])) {
-			std::cerr << "[ERROR]: Loading the font wasn't successful!\n";
+			Logger::get().log(LogLevel::Error, "Loading the font wasn't successful!", __FILE__, __LINE__, Paths::logs + "/Assets.log");
 		}
 		assets.setFont(entry[0], font);
 	}
@@ -27,7 +28,7 @@ void bx::LoadAssets::textures(Assets& assets, DatabaseManager&& database) {
 	for (const auto& entry : database.selectAllEntriesFrom("Textures")) {
 		sf::Texture texture;
 		if (!texture.loadFromFile(entry[1])) {
-			std::cerr << "[ERROR]: Loading the texture wasn't successful!\n";
+			Logger::get().log(LogLevel::Error, "Loading the texture wasn't successful!", __FILE__, __LINE__, Paths::logs + "/Assets.log");
 		}
 		texture.setSmooth(true);
 		assets.setTexture(entry[0], texture);
@@ -38,7 +39,7 @@ void bx::LoadAssets::sounds(Assets& assets, DatabaseManager&& database) {
 	for (const auto& entry : database.selectAllEntriesFrom("Sounds")) {
 		sf::SoundBuffer soundBuffer;
 		if (!soundBuffer.loadFromFile(entry[1])) {
-			std::cerr << "[ERROR]: Loading the sound wasn't successful!\n";
+			Logger::get().log(LogLevel::Error, "Loading the sound wasn't successful!", __FILE__, __LINE__, Paths::logs + "/Assets.log");
 		}
 		assets.setSoundBuffer(entry[0], soundBuffer);
 	}
