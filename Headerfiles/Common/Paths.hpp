@@ -7,7 +7,7 @@ namespace bx {
 		const std::string assetsConfigFiles = "Resources/ConfigFiles/Assets";
 		const std::string menuConfigFiles = "Resources/ConfigFiles/Menu";
 		const std::string uniformConfigFiles = "Resources/Configfiles/Uniform";
-		const std::string cofingFiles = "Resources/Configfiles";
+		const std::string configFiles = "Resources/Configfiles";
 		const std::string databases = "Resources/Databases";
 		const std::string assets = "Resources/Assets";
 		const std::string icons = "Resources/Icons";

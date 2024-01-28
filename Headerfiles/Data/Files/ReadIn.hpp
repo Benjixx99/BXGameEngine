@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include "../../Config/AnimationConfig.hpp"
 #include "../../Config/Config.hpp"
 #include "../../Config/MenuConfig.hpp"
 #include "../../Load/LoadUniforms.hpp"
@@ -15,5 +16,6 @@ namespace bx {
 		void floatUniformData(std::ifstream& file, FloatUniformVector& fuv);
 		void textureUniformData(std::ifstream& file, TextureUniformVector& tuv);
 		void menuData(std::ifstream& file, MenuConfigData& menu);
+		void animationsData(std::ifstream& file, std::vector<AnimationConfigData>& animationsConfig);
 	}
 }

@@ -47,6 +47,7 @@ void readInMenuInt(std::ifstream& file, bx::MenuConfigData& menu) {
 	std::string command;
 	int value;
 	file >> command >> value;
+
 	if (command == "HeaderSpaceFromTop") { menu.headerSpaceFromTop = value; }
 	else if (command == "HeaderSpaceFromLeft") { menu.headerSpaceFromLeft = value; }
 	
@@ -86,6 +87,25 @@ void readInMenuColor(std::ifstream& file, bx::MenuConfigData& menu) {
 	else if (command == "FooterOutline") { menu.colors[bx::ColorType::FooterOutline] = color; }
 	else { std::cerr << "[ERROR]: Unknown color type!\n"; }
 }
+
+void readInAnimationInt(std::ifstream& file, bx::AnimationConfigData& animationConfig) {
+	std::string command;
+	int value;
+	file >> command >> value;
+
+	if (command == "NumberOfFrames") { animationConfig.numberOfFrames = value; }
+	else if (command == "AnimationSpeed") { animationConfig.animationSpeed = value; }
+	else { std::cerr << "[ERROR]: Unknown int type!\n"; }
+}
+
+void readInAnimationString(std::ifstream& file, bx::AnimationConfigData& animationConfig) {
+	std::string command, name;
+	file >> command >> name;
+
+	if (command == "TextureName") { animationConfig.textureName = name; }
+	else { std::cerr << "[ERROR]: Unknown string type!\n"; }
+}
+
 
 bx::PlayerConfigData& bx::ReadIn::playerData(std::ifstream& file, PlayerConfigData& playerConfig) {
 	file >> playerConfig.GRID.x >> playerConfig.GRID.y >> playerConfig.SIZE.x >> playerConfig.SIZE.y >> playerConfig.SPEED.x
@@ -157,4 +177,18 @@ void bx::ReadIn::menuData(std::ifstream& file, MenuConfigData& menu) {
 	else if (command == "Color")	{ readInMenuColor(file, menu); }
 	else							{ std::cerr << "[ERROR]: Expected: String, Int or Color!\n"; }
 	menuData(file, menu);
+}
+
+void bx::ReadIn::animationsData(std::ifstream& file, std::vector<AnimationConfigData>& animationsConfig) {
+	AnimationConfigData data;
+	std::string command, name;
+	uint number;
+	
+	while (file >> command) {
+		
+		if (command == "Int")			{ readInAnimationInt(file, data); }
+		else if (command == "String")	{ readInAnimationString(file, data); }
+		else if (command == "End")		{ animationsConfig.push_back(data); }
+		else							{ std::cerr << "[ERROR]: Expected: String or Int!\n"; }
+	}
 }

@@ -1,10 +1,16 @@
 
 set(ANIMATION_CONFIG_FILE "${RESOURCES_CONFIGFILES}/Assets/animationsConfig.txt")
 if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${ANIMATION_CONFIG_FILE}")
-    file(WRITE "${RESOURCES_CONFIGFILES}/${ANIMATION_CONFIG_FILE}"
-        "Texture Name\t Number of frames\t Animation speed\n"
-        "\nPlayer\t\t 2\t\t\t 30\n"
-        "\nRemove the content of this file and add what ever animation config data you need!"
+    file(WRITE "${CMAKE_CURRENT_SOURCE_DIR}/${ANIMATION_CONFIG_FILE}"
+    "String  TextureName	 PlayerMovingExample\n"
+    "Int     NumberOfFrames  2\n"
+    "Int     AnimationSpeed  30\n"
+    "End\n\n"
+        
+    "String  TextureName 	 EnemyMovingExample\n"
+    "Int     NumberOfFrames  4\n"
+    "Int     AnimationSpeed  20\n"
+    "End\n\n"
     )
 endif()
 

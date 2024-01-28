@@ -27,7 +27,7 @@ void bx::GameEngine::initAssets() {
 
 void bx::GameEngine::initShell() {
 	bool startShell = false;
-	std::ifstream file(Paths::cofingFiles + "/shellConfig.txt");
+	std::ifstream file(Paths::configFiles + "/shellConfig.txt");
 	file >> startShell;
 	if (!startShell) { return; }
 
