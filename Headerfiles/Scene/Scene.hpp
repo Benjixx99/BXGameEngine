@@ -18,7 +18,6 @@
 #include "../Action.hpp"
 
 namespace bx {
-
 	class GameEngine;
 
 	class Scene {
@@ -55,6 +54,7 @@ namespace bx {
 		virtual void doAction(const Action& action) = 0;
 
 		void registerAction(int inputKey, const ActionName name);
+		void registerAllActions(const std::string& keyActionFile);
 
 		size_t getCurrentFrame() const;
 		bool getHasEnded() const;

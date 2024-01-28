@@ -1,0 +1,4 @@
+W 	Up
+S 	Down
+D 	Select
+Esc 	Quit

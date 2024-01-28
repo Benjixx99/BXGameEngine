@@ -192,3 +192,13 @@ void bx::ReadIn::animationsData(std::ifstream& file, std::vector<AnimationConfig
 		else							{ std::cerr << "[ERROR]: Expected: String or Int!\n"; }
 	}
 }
+
+void bx::ReadIn::keyboardLayout(std::ifstream& file, VectorStringPair& keyActionPairs) {
+	std::string command, keyValue, actionName;
+
+	while (file >> keyValue) {
+		getline(file, actionName);
+		trimWhitespace(actionName);
+		keyActionPairs.push_back(std::pair(keyValue, actionName));
+	}
+}

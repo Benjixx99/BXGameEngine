@@ -1,5 +1,6 @@
 #include "../../Headerfiles/Scene/SceneMenu.hpp"
 #include "../../Headerfiles/Scene/ScenePlay.hpp"
+#include "../../Headerfiles/Scene/SceneKeyboardSettings.hpp"
 #include "../../Headerfiles/Common/Paths.hpp"
 #include "../../Headerfiles/Data/Files/ReadIn.hpp"
 #include "../../Headerfiles/PAM/Physics.hpp"
@@ -13,10 +14,7 @@ bx::SceneMenu::SceneMenu(GameEngine* gameEngine, const std::string& menuConfigFi
 }
 
 void bx::SceneMenu::init() {
-	registerAction(sf::Keyboard::W, ActionName::Up);
-	registerAction(sf::Keyboard::S, ActionName::Down);
-	registerAction(sf::Keyboard::D, ActionName::Action);
-	registerAction(sf::Keyboard::Escape, ActionName::Quit);
+	registerAllActions("/MenuKeyAction.txt");
 	menuText.setFont(game->getAssets().getFont(config.fontName));
 }
 
@@ -58,7 +56,7 @@ void bx::SceneMenu::doAction(const bx::Action& action) {
 		else if (action.getName() == ActionName::Down) {
 			selectedMenuIndex = (selectedMenuIndex + 1) % config.menuItemTexts.size();
 		}
-		else if (action.getName() == ActionName::Action) {
+		else if (action.getName() == ActionName::Select) {
 			selectAction();
 		}
 		else if (action.getName() == ActionName::Quit) {
@@ -79,7 +77,7 @@ void bx::SceneMenu::selectAction() {
 	case 3: std::cout << "Levels\n"; break;
 	case 4: std::cout << "Settings\n"; break;
 	case 5: onEnd(); break;
-	case 6: game->changeScene("TestLevel", std::make_shared<ScenePlay>(game, "Levels/TestLevel"));		break;
+	case 6: game->changeScene("TestLevel", std::make_shared<ScenePlay>(game, "Levels/TestLevel"));	break;
 	default:
 		break;
 	}

@@ -1,0 +1,13 @@
+P 	Pause
+Esc 	Quit
+T 	Toggle texture
+C 	Toggle bounding box
+G 	Toggle grid
+V 	Toggle sight line
+Y 	Toggle following camera
+W 	Up
+S 	Down
+A 	Left
+D 	Right
+Space 	Swing
+Q 	Open editor

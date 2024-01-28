@@ -3,7 +3,6 @@
 #include "../Headerfiles/Tools/Logger.hpp"
 #include "../Headerfiles/Common/Paths.hpp"
 
-#include <fstream>
 
 int main(int argc, char *argv[]) {
 

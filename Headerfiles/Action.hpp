@@ -7,10 +7,8 @@
 namespace bx {
 
 	enum class ActionName : ushort {
-		Action,
+		Select,
 		Pause,
-		Editor,
-		Draw,
 		Save,
 		Quit,
 		

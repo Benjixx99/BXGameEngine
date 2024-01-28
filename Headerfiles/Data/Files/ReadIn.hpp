@@ -8,6 +8,8 @@
 
 namespace bx {
 
+	using VectorStringPair = std::vector<std::pair<std::string, std::string>>;
+
 	namespace ReadIn {
 		PlayerConfigData& playerData(std::ifstream& file, PlayerConfigData& playerConfig);
 		NPCConfigData& NPCData(std::ifstream& file, NPCConfigData& enemyConfig);
@@ -17,5 +19,6 @@ namespace bx {
 		void textureUniformData(std::ifstream& file, TextureUniformVector& tuv);
 		void menuData(std::ifstream& file, MenuConfigData& menu);
 		void animationsData(std::ifstream& file, std::vector<AnimationConfigData>& animationsConfig);
+		void keyboardLayout(std::ifstream& file, VectorStringPair& keyActionPairs);
 	}
 }

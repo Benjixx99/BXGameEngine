@@ -1,27 +1,23 @@
-#include <iostream>
-#include <fstream>
-#include <thread>
-#include <mutex>
-
-#include <SFML/Audio.hpp>
-
 #include "../../Headerfiles/Scene/ScenePlay.hpp"
 #include "../../Headerfiles/Scene/SceneInGameMenu.hpp"
 #include "../../Headerfiles/AAD/GridField.hpp"
 #include "../../Headerfiles/Common/Paths.hpp"
+#include "../../Headerfiles/Data/Files/ReadIn.hpp"
 #include "../../Headerfiles/ECS/EntityMemoryPool.hpp"
 #include "../../Headerfiles/PAM/Physics.hpp"
+#include "../../Headerfiles/Convert.hpp"
 
+#include <iostream>
+#include <thread>
 
 bx::ScenePlay::ScenePlay(GameEngine* gameEngine, const std::string& levelPath) : Scene(gameEngine), levelPath (levelPath) {
 	init(levelPath);
 }
 
 // -------------------------------------------------------------------------------------------------------------------------- [Init]
-// TODO: Add a KeySetting.txt file (for the keyboard)
 void bx::ScenePlay::init(const std::string& levelPath) {
 
-	registerAllActions();
+	registerAllActions("/PlayKeyAction.txt");
 
 	ConfigFiles configFiles(levelPath + "_PlayerConfig.txt", levelPath + "_NPCsConfig.txt", levelPath + "_tilesConfig.txt");
 
@@ -356,21 +352,4 @@ void bx::ScenePlay::actionRightClick(const Action& action) {
 
 void bx::ScenePlay::actionOpenEditor() {
 	game->shellSharedData().openEditor = true;
-}
-
-void bx::ScenePlay::registerAllActions() {
-	registerAction(sf::Keyboard::P, ActionName::Pause);
-	registerAction(sf::Keyboard::Escape, ActionName::Quit);
-	registerAction(sf::Keyboard::T, ActionName::ToggleTexture);
-	registerAction(sf::Keyboard::C, ActionName::ToggleCollision);
-	registerAction(sf::Keyboard::G, ActionName::ToggleGrid);
-	registerAction(sf::Keyboard::V, ActionName::ToggleSightLine);
-	registerAction(sf::Keyboard::Y, ActionName::ToggleFollowingCamera);
-	registerAction(sf::Keyboard::W, ActionName::Up);
-	registerAction(sf::Keyboard::S, ActionName::Down);
-	registerAction(sf::Keyboard::A, ActionName::Left);
-	registerAction(sf::Keyboard::D, ActionName::Right);
-	//registerAction(sf::Keyboard::Space, ActionName::Shoot);
-	registerAction(sf::Keyboard::Space, ActionName::Swing);
-	registerAction(sf::Keyboard::Q, ActionName::OpenQtWindwon);
 }

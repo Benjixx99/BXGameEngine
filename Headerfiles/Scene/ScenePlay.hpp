@@ -69,8 +69,6 @@ namespace bx {
 		void actionRightClick(const Action& action);
 		void actionOpenEditor();
 
-		void registerAllActions();
-
 	public:
 		ScenePlay(GameEngine* gameEngine, const std::string& levelPath);
 		void update();
