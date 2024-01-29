@@ -16,7 +16,8 @@ bx::Animation::Animation(const std::string& name, const bx::Vector2& size, const
 }
 
 void bx::Animation::update(bool repeat, const Vector2& viewSize) {
-	if (repeat) { 
+	if (repeat) {
+		if (speed == 0) { speed = 10; }
 		sprite.setTextureRect(sf::IntRect(sf::Vector2i(currentFrame / speed * viewSize.x, 0), sf::Vector2i(viewSize.x, viewSize.y)));
 	}
 	else {

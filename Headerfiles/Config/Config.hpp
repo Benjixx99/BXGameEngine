@@ -24,7 +24,6 @@ namespace bx {
 		Vector2 SIZE { 64, 64 };
 		double GRAVITY = 0;
 		int HEALTH = 5;
-		std::string WEAPON = "";
 
 		PlayerConfigData() {}
 		PlayerConfigData(EntityPointer entity, Coordinates& coordinates) {

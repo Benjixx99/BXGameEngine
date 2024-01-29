@@ -15,6 +15,10 @@ bx::EntityPointer bx::Creation::spawnPlayer(const PlayerConfigData& config) {
 	player->addComponent<CState>();
 	player->addComponent<CMobile>();
 	player->addComponent<CHealth>(config.HEALTH);
+
+	if (config.GRAVITY > 0) {
+		player->addComponent<CGravity>(config.GRAVITY);
+	}
 	
 	return player;
 }

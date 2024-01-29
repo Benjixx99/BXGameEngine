@@ -1,6 +1,33 @@
 #include "../../../Headerfiles/Data/Files/ReadIn.hpp"
 #include "../../../Headerfiles/Common/TrimString.hpp"
 
+
+void readInPlayerInt(std::ifstream& file, bx::PlayerConfigData& playerConfig) {
+	std::string command;
+	int value;
+	file >> command >> value;
+
+	if (command == "SpawnGridPositionX")		{ playerConfig.GRID.x = value; }
+	else if (command == "SpawnGridPositionY")	{ playerConfig.GRID.y = value; }
+	else if (command == "SpawnRoomX")			{ playerConfig.ROOM.x = value; }
+	else if (command == "SpawnRoomY")			{ playerConfig.ROOM.y = value; }
+	else if (command == "SizeX")				{ playerConfig.SIZE.x = value; }
+	else if (command == "SizeY")				{ playerConfig.SIZE.y = value; }
+	else if (command == "MaxHealth")			{ playerConfig.HEALTH = value; }
+	else										{ std::cerr << "[ERROR]: Unknown int type!\n"; }
+}
+
+void readInPlayerDouble(std::ifstream& file, bx::PlayerConfigData& playerConfig) {
+	std::string command;
+	double value;
+	file >> command >> value;
+
+	if (command == "SpeedX") { playerConfig.SPEED.x = value; }
+	else if (command == "SpeedY") { playerConfig.SPEED.y = value; }
+	else if (command == "Gravity") { playerConfig.GRAVITY = value; }
+	else { std::cerr << "[ERROR]: Unknown double type!\n"; }
+}
+
 std::vector<float>& readInFloats(std::ifstream& file, int number, std::vector<float>& values) {
 	if (number <= 0) { return values; }
 	float value;
@@ -108,8 +135,14 @@ void readInAnimationString(std::ifstream& file, bx::AnimationConfigData& animati
 
 
 bx::PlayerConfigData& bx::ReadIn::playerData(std::ifstream& file, PlayerConfigData& playerConfig) {
-	file >> playerConfig.GRID.x >> playerConfig.GRID.y >> playerConfig.SIZE.x >> playerConfig.SIZE.y >> playerConfig.SPEED.x
-		>> playerConfig.SPEED.y >> playerConfig.GRAVITY >> playerConfig.HEALTH >> playerConfig.WEAPON;
+	std::string command;
+
+	while (file >> command) {
+		if (command == "Int")			{ readInPlayerInt(file, playerConfig); }
+		else if (command == "Double")	{ readInPlayerDouble(file, playerConfig); }
+		else { std::cerr << "[ERROR]: Expected: Int or Double!\n"; }
+	}
+
 	return playerConfig;
 }
 
@@ -181,8 +214,7 @@ void bx::ReadIn::menuData(std::ifstream& file, MenuConfigData& menu) {
 
 void bx::ReadIn::animationsData(std::ifstream& file, std::vector<AnimationConfigData>& animationsConfig) {
 	AnimationConfigData data;
-	std::string command, name;
-	uint number;
+	std::string command;
 	
 	while (file >> command) {
 		

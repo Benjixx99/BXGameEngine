@@ -1,1 +1,11 @@
-12 10 54 64 6 6 0 4 Sword
+Int 	SpawnGridPositionX	12
+Int 	SpawnGridPositionY	10
+Int	SpawnRoomX		0
+Int	SpawnRoomY		0
+Int	SizeX 			64
+Int	SizeY 			64
+Int	MaxHealth		5
+
+Double	SpeedX			6
+Double	SpeedY			6
+Double	Gravity			0

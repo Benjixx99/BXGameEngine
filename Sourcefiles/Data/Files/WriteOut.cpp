@@ -1,9 +1,17 @@
 #include "../../../Headerfiles/Data/Files/WriteOut.hpp"
 
 void bx::WriteOut::playerData(std::ofstream& file, const PlayerConfigData&& config) {
-	file << config.GRID.x << "\t" << config.GRID.y << "\t" << config.SIZE.x << "\t" << config.SIZE.y << "\t" 
-		<< config.SPEED.x << "\t" << config.SPEED.y << "\t" << config.GRAVITY << "\t" << config.HEALTH << "\t" 
-		<< config.WEAPON << "\n";
+	file << "Int\t SpawnGridPositionX\t" << config.GRID.x << "\n"
+		<< "Int\t SpawnGridPositionY\t" << config.GRID.y << "\n"
+		<< "Int\t SpawnRoomX\t" << config.ROOM.x << "\n"
+		<< "Int\t SpawnRoomY\t" << config.ROOM.y << "\n"
+		<< "Int\t SizeX\t" << config.SIZE.y << "\n"
+		<< "Int\t SizeY\t" << config.SIZE.y << "\n"
+		<< "Int\t MaxHealth\t" << config.HEALTH << "\n"
+
+		<< "Double\t SpeedX\t" << config.SPEED.x << "\n"
+		<< "Double\t SpeedY\t" << config.SPEED.y << "\n"
+		<< "Double\t Gravity\t" << config.GRAVITY << "\n";
 }
 
 void bx::WriteOut::NPCData(std::ofstream& file, const NPCConfigData&& config) {
