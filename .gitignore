@@ -6,10 +6,19 @@ Debug/
 Release/
 x64/
 
-Resources/Assets
-Resources/Configfiles/Assets
+Resources/Assets/Fonts
+Resources/Assets/Shaders
+Resources/Assets/Sounds
+Resources/Assets/Textures/Misc
+Resources/Assets/Textures/NPCs/Game
+Resources/Assets/Textures/Tiles/Game
+
+
+
+Resources/Configfiles/Assets/animationsConfigOLD.txt
 Resources/Configfiles/NotInUseYet
 Resources/Configfiles/Uniform
+
 Resources/Databases
 Resources/Logs
 Resources/Proposals

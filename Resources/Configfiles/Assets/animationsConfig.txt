@@ -1,0 +1,65 @@
+String  TextureName	Enemy1
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	Enemy2
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	Enemy3
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	Enemy4
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+
+String  TextureName	PlayerMovingDown
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+	
+String  TextureName	PlayerMovingSide
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	PlayerMovingUp
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	PlayerSwordDown
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	PlayerSwordSide
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	PlayerSwordUp
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	SwordDown
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	SwordSide
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
+
+String  TextureName	SwordUp	
+Int     NumberOfFrames  1
+Int     AnimationSpeed  10
+End
