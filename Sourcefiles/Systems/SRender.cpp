@@ -46,7 +46,6 @@ void bx::SRender::texture(EntityPointer entity, Assets& assets) {
 	if (entity->hasComponent<CAnimation>()) {
 		auto& transform = entity->getComponent<CTransform>();
 		auto& animation = entity->getComponent<CAnimation>().animation;
-		animation.getSprite().setRotation(transform.angle);
 		animation.getSprite().setPosition(transform.position.x, transform.position.y);
 		animation.getSprite().setScale(transform.scale.x, transform.scale.y);
 		
