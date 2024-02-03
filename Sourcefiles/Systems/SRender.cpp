@@ -120,27 +120,29 @@ void bx::SRender::collision(EntityPointer entity) {
 	}
 }
 
-// Work on the grid system
 void bx::SRender::grid(const Coordinates& coordinates) {
-	float leftX = window->getView().getCenter().x - coordinates.getWidth() - 2;
-	float rightX = leftX + coordinates.getWidth() + coordinates.getGridSize().x + coordinates.getWidth() / 2;
-	float nextGridX = leftX - ((int)leftX % (int)coordinates.getGridSize().x);
+	float leftX = window->getView().getCenter().x - coordinates.getWidth() / 2;
+	float rightX = leftX + coordinates.getWidth();
+	float aboveY = window->getView().getCenter().y - coordinates.getHeight() / 2;
+	float belowY = aboveY + coordinates.getHeight();
 
-	for (float x = nextGridX; x < rightX; x += coordinates.getGridSize().x) {
-		drawLine(Vector2(x, 0), Vector2(x, coordinates.getHeight()));
+	for (float x = leftX; x < rightX; x += coordinates.getGridSize().x) {
+		drawLine(Vector2(x, aboveY), Vector2(x, belowY));
 	}
 
-	for (float y = 0; y < coordinates.getHeight(); y += coordinates.getGridSize().y) {
-		drawLine(Vector2(leftX, coordinates.getHeight() - y), Vector2(rightX, coordinates.getHeight() - y));
+	for (float y = aboveY; y < belowY; y += coordinates.getGridSize().y) {
+		drawLine(Vector2(leftX, y), Vector2(rightX, y));
 
-		for (float x = nextGridX; x < rightX; x += coordinates.getGridSize().x) {
-			std::string xCell = std::to_string((int)x / (int)coordinates.getGridSize().x);
-			std::string yCell = std::to_string((int)y / (int)coordinates.getGridSize().y);
-			gridText.setString("(" + xCell + "," + yCell + ")");
-			gridText.setPosition(x + 3, y + 2);
-			gridText.setFillColor(sf::Color::Black);
-			window->draw(gridText);
-		}
+		// Disabled the grid text that display the grid positions
+		// 
+		//for (float x = 0; x < rightX; x += coordinates.getGridSize().x) {
+		//	std::string xCell = std::to_string((int)x / (int)coordinates.getGridSize().x);
+		//	std::string yCell = std::to_string((int)y / (int)coordinates.getGridSize().y);
+		//	gridText.setString("(" + xCell + "," + yCell + ")");
+		//	gridText.setPosition(x + 3, y + 2);
+		//	gridText.setFillColor(sf::Color::Black);
+		//	window->draw(gridText);
+		//}
 	}
 }
 
