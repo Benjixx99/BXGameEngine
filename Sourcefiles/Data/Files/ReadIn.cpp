@@ -1,6 +1,7 @@
 #include "../../../Headerfiles/Data/Files/ReadIn.hpp"
 #include "../../../Headerfiles/Common/TrimString.hpp"
-
+#include "../../../Headerfiles/Common/Paths.hpp"
+#include "../../../Headerfiles/Tools/Logger.hpp"
 
 void readInPlayerInt(std::ifstream& file, bx::PlayerConfigData& playerConfig) {
 	std::string command;
@@ -14,7 +15,7 @@ void readInPlayerInt(std::ifstream& file, bx::PlayerConfigData& playerConfig) {
 	else if (command == "SizeX")				{ playerConfig.SIZE.x = value; }
 	else if (command == "SizeY")				{ playerConfig.SIZE.y = value; }
 	else if (command == "MaxHealth")			{ playerConfig.HEALTH = value; }
-	else										{ std::cerr << "[ERROR]: Unknown int type!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unkown int type!", "ReadIn.cpp", __LINE__); }
 }
 
 void readInPlayerDouble(std::ifstream& file, bx::PlayerConfigData& playerConfig) {
@@ -22,10 +23,10 @@ void readInPlayerDouble(std::ifstream& file, bx::PlayerConfigData& playerConfig)
 	double value;
 	file >> command >> value;
 
-	if (command == "SpeedX") { playerConfig.SPEED.x = value; }
-	else if (command == "SpeedY") { playerConfig.SPEED.y = value; }
-	else if (command == "Gravity") { playerConfig.GRAVITY = value; }
-	else { std::cerr << "[ERROR]: Unknown double type!\n"; }
+	if (command == "SpeedX")		{ playerConfig.SPEED.x = value; }
+	else if (command == "SpeedY")	{ playerConfig.SPEED.y = value; }
+	else if (command == "Gravity")	{ playerConfig.GRAVITY = value; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown double type!", "ReadIn.cpp", __LINE__); }
 }
 
 std::vector<float>& readInFloats(std::ifstream& file, int number, std::vector<float>& values) {
@@ -67,7 +68,7 @@ void readInMenuString(std::ifstream& file, bx::MenuConfigData& menu) {
 	else if (command == "MenuItem") { menu.menuItemTexts.push_back(name); }
 	else if (command == "Footer") { menu.footerText = name; }
 	else if (command == "Font") { menu.fontName = name; }
-	else { std::cerr << "[ERROR]: Unknown string type!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown string type!", "ReadIn.cpp", __LINE__); }
 }
 
 void readInMenuInt(std::ifstream& file, bx::MenuConfigData& menu) {
@@ -94,7 +95,7 @@ void readInMenuInt(std::ifstream& file, bx::MenuConfigData& menu) {
 	else if (command == "FooterFontSize") { menu.footerFontSize = value; }
 	else if (command == "FooterOutlineThickness") { menu.footerOutlineThickness = value; }
 	
-	else { std::cerr << "[ERROR]: Unknown int type!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown int type!", "ReadIn.cpp", __LINE__); }
 }
 
 void readInMenuColor(std::ifstream& file, bx::MenuConfigData& menu) {
@@ -112,7 +113,7 @@ void readInMenuColor(std::ifstream& file, bx::MenuConfigData& menu) {
 	else if (command == "SelectedMenuItemOutline") { menu.colors[bx::ColorType::SelectedMenuItemOutline] = color; }
 	else if (command == "FooterFont") { menu.colors[bx::ColorType::FooterFont] = color; }
 	else if (command == "FooterOutline") { menu.colors[bx::ColorType::FooterOutline] = color; }
-	else { std::cerr << "[ERROR]: Unknown color type!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown color type!", "ReadIn.cpp", __LINE__); }
 }
 
 void readInAnimationInt(std::ifstream& file, bx::AnimationConfigData& animationConfig) {
@@ -122,7 +123,7 @@ void readInAnimationInt(std::ifstream& file, bx::AnimationConfigData& animationC
 
 	if (command == "NumberOfFrames") { animationConfig.numberOfFrames = value; }
 	else if (command == "AnimationSpeed") { animationConfig.animationSpeed = value; }
-	else { std::cerr << "[ERROR]: Unknown int type!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown int type!", "ReadIn.cpp", __LINE__); }
 }
 
 void readInAnimationString(std::ifstream& file, bx::AnimationConfigData& animationConfig) {
@@ -130,7 +131,7 @@ void readInAnimationString(std::ifstream& file, bx::AnimationConfigData& animati
 	file >> command >> name;
 
 	if (command == "TextureName") { animationConfig.textureName = name; }
-	else { std::cerr << "[ERROR]: Unknown string type!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown string type!", "ReadIn.cpp", __LINE__); }
 }
 
 
@@ -140,7 +141,7 @@ bx::PlayerConfigData& bx::ReadIn::playerData(std::ifstream& file, PlayerConfigDa
 	while (file >> command) {
 		if (command == "Int")			{ readInPlayerInt(file, playerConfig); }
 		else if (command == "Double")	{ readInPlayerDouble(file, playerConfig); }
-		else { std::cerr << "[ERROR]: Expected: Int or Double!\n"; }
+		else { bx::Logger::get().log(bx::LogLevel::Warning, "Unknown int type!", "ReadIn.cpp", __LINE__); }
 	}
 
 	return playerConfig;
@@ -188,7 +189,7 @@ void bx::ReadIn::floatUniformData(std::ifstream& file, FloatUniformVector& fuv) 
 
 	if (command == "float")		{ readInUniformFloat(file, fuv); }
 	else if (command == "vec")	{ readInUniformVec(file, fuv); }
-	else						{ std::cerr << "[ERROR]: Expected: float or vec!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Expected: float or vec!", "ReadIn.cpp", __LINE__); }
 	floatUniformData(file, fuv);
 }
 
@@ -197,7 +198,7 @@ void bx::ReadIn::textureUniformData(std::ifstream& file, TextureUniformVector& t
 	if (!(file >> command)) { return; }
 
 	if (command == "texture")	{ readInUniformTexture(file, tuv); }
-	else						{ std::cerr << "[ERROR]: Expected: texture!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Expected: texture!", "ReadIn.cpp", __LINE__); }
 	textureUniformData(file, tuv);
 }
 
@@ -208,7 +209,7 @@ void bx::ReadIn::menuData(std::ifstream& file, MenuConfigData& menu) {
 	if (command == "String")		{ readInMenuString(file, menu); }
 	else if (command == "Int")		{ readInMenuInt(file, menu); }
 	else if (command == "Color")	{ readInMenuColor(file, menu); }
-	else							{ std::cerr << "[ERROR]: Expected: String, Int or Color!\n"; }
+	else { bx::Logger::get().log(bx::LogLevel::Warning, "Expected: String, Int or Color!", "ReadIn.cpp", __LINE__); }
 	menuData(file, menu);
 }
 
@@ -218,10 +219,10 @@ void bx::ReadIn::animationsData(std::ifstream& file, std::vector<AnimationConfig
 	
 	while (file >> command) {
 		
-		if (command == "Int")			{ readInAnimationInt(file, data); }
-		else if (command == "String")	{ readInAnimationString(file, data); }
+		if (command == "String") { readInAnimationString(file, data); }
+		else if (command == "Int")			{ readInAnimationInt(file, data); }
 		else if (command == "End")		{ animationsConfig.push_back(data); }
-		else							{ std::cerr << "[ERROR]: Expected: String or Int!\n"; }
+		else { bx::Logger::get().log(bx::LogLevel::Warning, "Expected: String or Int!", "ReadIn.cpp", __LINE__); }
 	}
 }
 
