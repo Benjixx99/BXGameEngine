@@ -160,9 +160,9 @@ std::string bx::Convert::actionNameValueToString(const ActionName actionName) {
 
 	case ActionName::ToggleTexture: return "Toggle texture";
 	case ActionName::ToggleCollision: return "Toggle bounding box";
-	case ActionName::ToggleGrid: return "Toggle gird";
+	case ActionName::ToggleGrid: return "Toggle grid";
 	case ActionName::ToggleSightLine: return "Toggle sight line";
-	case ActionName::ToggleFollowingCamera: return "Toggle follwing camera";
+	case ActionName::ToggleFollowingCamera: return "Toggle following camera";
 
 	case ActionName::Up: return "Up";
 	case ActionName::Down: return "Down";
@@ -194,9 +194,9 @@ bx::ActionName bx::Convert::stringToActionNameValue(const std::string& value) {
 
 	else if (value == "Toggle texture") { return ActionName::ToggleTexture; }
 	else if (value == "Toggle bounding box") { return ActionName::ToggleCollision; }
-	else if (value == "Toggle gird") { return ActionName::ToggleGrid; }
+	else if (value == "Toggle grid") { return ActionName::ToggleGrid; }
 	else if (value == "Toggle sight line") { return ActionName::ToggleSightLine; }
-	else if (value == "Toggle follwing camera") { return ActionName::ToggleFollowingCamera; }
+	else if (value == "Toggle following camera") { return ActionName::ToggleFollowingCamera; }
 
 	else if (value == "Up") { return ActionName::Up; }
 	else if (value == "Down") { return ActionName::Down; }
